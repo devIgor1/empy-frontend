@@ -1,6 +1,6 @@
 import awnings from "../assets/headerAwnings.svg"
 import empyPlan from "../assets/empyPlan.svg"
-import Plans from "./Plans"
+import PlansToBuy from "./PlansToBuy"
 
 const HeroSection = () => {
   return (
@@ -15,7 +15,7 @@ const HeroSection = () => {
           <div className="flex flex-col items-center justify-center mt-5">
             <img src={empyPlan} alt="empyPlan" className="w-full h-auto" />
           </div>
-          <Plans />
+          <PlansToBuy />
         </div>
       </div>
     </>
