@@ -1,5 +1,5 @@
 import PlanCard from "./PlanCard"
-import whatsappLogo from "../assets/WhatsappLogo.svg"
+import { PiWhatsappLogo } from "react-icons/pi"
 
 const Plans = () => {
   return (
@@ -28,10 +28,10 @@ const Plans = () => {
       </div>
 
       <div className="mt-8 flex justify-start">
-        <button className="bg-[#5E17F5] text-white px-5 py-3 rounded-full text-sm flex items-center justify-center gap-2">
-          <img src={whatsappLogo} width={15} height={15} alt="whatsappLogo" />
+        <div className="bg-[#5E17F5] text-white px-5 py-3 rounded-full text-sm flex items-center justify-center gap-2">
+          <PiWhatsappLogo size={17} color="white" />
           <span className="text-sm">Tire suas dúvidas</span>
-        </button>
+        </div>
       </div>
     </section>
   )

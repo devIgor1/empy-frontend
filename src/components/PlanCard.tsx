@@ -1,3 +1,5 @@
+import { PiCheckCircle } from "react-icons/pi"
+
 type PlanCardProps = {
   title: string
   priceAnual: string
@@ -24,7 +26,7 @@ const PlanCard = ({
           </p>
           <p className="empy-text-gray font-bold flex items-center justify-center gap-1">
             Anual R$
-            <span className="empy-text-blue font-bold text-3xl">
+            <span className="empy-text-blue font-bold text-4xl">
               {priceAnual}
             </span>
             / mensais
@@ -34,16 +36,15 @@ const PlanCard = ({
         <div className="">
           <p className="empy-text-gray font-bold flex items-center justify-center gap-1">
             Mensal R$
-            <span className="empy-text-blue font-bold text-3xl">
-              {priceMensal}
-            </span>
+            <span className="text-black font-bold text-4xl">{priceMensal}</span>
             / mensais
           </p>
         </div>
 
         <div className="empy-bg-blue rounded-lg text-white mt-4 px-4 py-3 space-y-2">
-          <p className="font-semibold flex items-center gap-2">
-            <span>✔</span> Consulta de benefícios do INSS
+          <p className="font-semibold flex justify-start items-center gap-2">
+            <PiCheckCircle size={20} color="white" />
+            Consulta de benefícios do INSS
           </p>
           {beneficios.map((b, i) => (
             <p key={i} className="text-sm flex items-center gap-2">
