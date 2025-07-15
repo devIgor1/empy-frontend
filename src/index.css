@@ -1,7 +1,39 @@
 @import "tailwindcss";
+@font-face {
+  font-family: "Roboto";
+  src: url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+}
+
+@theme {
+  --font-roboto: "Roboto", sans-serif;
+}
 
 @layer base {
   body {
-    @apply bg-[#EAEDEE];
+    @apply bg-[#EAEDEE] font-roboto;
   }
+}
+
+@utility empy-text-blue {
+  @apply text-[#006EB6];
+}
+
+@utility empy-text-gray {
+  @apply text-[#121929]/60;
+}
+
+@utility empy-border-blue {
+  @apply border border-dotted rounded-xl border-[#006EB6];
+}
+
+@utility empy-border-gray {
+  @apply border border-[#121929]/10 rounded-xl;
+}
+
+@utility empy-bg-blue {
+  @apply bg-[#3F4FFF];
+}
+
+@utility empy-button-blue {
+  @apply bg-[#3342B7] text-white rounded-full p-[10px] cursor-pointer;
 }
