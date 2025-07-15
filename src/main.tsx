@@ -4,6 +4,7 @@ import "./index.css"
 import App from "./App.tsx"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Checkout from "./pages/Checkout.tsx"
+import Receipt from "./components/Receipt.tsx"
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/checkout/:cycle",
     element: <Checkout />,
+  },
+  {
+    path: "/receipt",
+    element: <Receipt />,
   },
 ])
 
