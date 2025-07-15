@@ -5,13 +5,24 @@ import { IMaskMixin } from "react-imask"
 import axios from "axios"
 import { PaymentSchema, type PaymentDTO } from "../schemas/payment.schema"
 import { toast } from "react-toastify"
+import type { Plan } from "../types"
+import { useNavigate } from "react-router-dom"
 
 const CFormInputWithMask = IMaskMixin(({ inputRef, ...props }: any) => (
   <input {...props} ref={inputRef} />
 ))
 
-const CheckoutForm = ({ planId, cycle }: { planId: string; cycle: string }) => {
-  const [cardNumber, setCardNumber] = useState("")
+const CheckoutForm = ({
+  planId,
+  cycle,
+  planData,
+}: {
+  planId: string
+  cycle: string
+  planData: Plan
+}) => {
+  const navigate = useNavigate()
+  const [cardValue, setCardValue] = useState("")
 
   const {
     register,
@@ -24,20 +35,28 @@ const CheckoutForm = ({ planId, cycle }: { planId: string; cycle: string }) => {
 
   const onSubmit = async (data: PaymentDTO) => {
     try {
-      const response = await axios.post(
-        `http://localhost:3333/checkout/${planId}/${cycle}`,
-        {
-          namePublic: data.name,
-          cardNumber: cardNumber,
-          expiry: data.expiry,
-          cvv: data.cvv,
-          monthlyPrice: 189.9,
-          annualPrice: 1899,
-        }
-      )
-      console.log(response.data)
+      await axios.post(`http://localhost:3333/checkout/${planId}/${cycle}`, {
+        namePublic: data.name,
+        cardNumber: cardValue,
+        expiry: data.expiry,
+        cvv: data.cvv,
+        monthlyPrice: planData.monthlyPrice,
+        annualPrice: planData.annualPrice,
+      })
+
+      const last4 = cardValue.slice(-4)
+      const amount =
+        cycle === "monthly" ? planData.monthlyPrice : planData.annualPrice
+
+      navigate("/receipt", {
+        state: {
+          plan: planData,
+          amount,
+          last4Digits: last4,
+        },
+      })
     } catch (err) {
-      toast.error("Erro ao enviar pagamento")
+      console.error("Erro:", err)
     }
   }
 
@@ -69,9 +88,9 @@ const CheckoutForm = ({ planId, cycle }: { planId: string; cycle: string }) => {
           mask="0000 0000 0000 0000"
           placeholder="0000 0000 0000 0000"
           className="w-full mt-1 border rounded-md p-2 text-sm text-gray-700"
-          value={cardNumber}
+          value={cardValue}
           onAccept={(value: string) => {
-            setCardNumber(value)
+            setCardValue(value)
             setValue("cardNumber", value, { shouldValidate: true })
           }}
         />
