@@ -9,9 +9,9 @@ export const statusToPtBr = (status: string) => {
   switch (status) {
     case "PAID":
       return "Pago"
-    case "DECLINED_NO_LIMIT":
+    case "NOT_AUTHORIZED":
       return "Não autorizado"
-    case "FAILED":
+    case "DECLINED_NO_LIMIT":
       return "Recusado - Sem limite"
     default:
       return status

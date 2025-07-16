@@ -134,13 +134,13 @@ export default function PurchaseHistoryTable({
       case "DECLINED_NO_LIMIT":
         return (
           <Badge className="bg-[#FFA789] text-black border-[#FF4E3A] font-bold px-20 py-2">
-            Não autorizado
+            Recusado - Sem limite
           </Badge>
         )
-      case "FAILED":
+      case "NOT_AUTHORIZED":
         return (
           <Badge className="bg-[#FFA789] text-black border-[#FF4E3A] font-bold px-20 py-2">
-            Recusado - Sem limite
+            Não autorizado
           </Badge>
         )
       default:
