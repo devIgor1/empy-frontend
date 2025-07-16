@@ -2,7 +2,7 @@ import AuthenticatedLayout from "../layouts/AuthenticatedLayout"
 import HistoryTable from "../components/HistoryTable"
 import { useEffect, useState } from "react"
 import type { Purchase } from "@/types/purchases"
-import { getPurchases } from "@/services/getServices"
+import { getPurchases } from "@/services/getPurchases"
 import PlanHeader from "@/components/PlanHeader"
 
 const HistoryPage = () => {
