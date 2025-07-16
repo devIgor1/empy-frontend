@@ -1,5 +1,5 @@
 import { PiCheckCircle } from "react-icons/pi"
-import type { Plan } from "../types"
+import type { Plan } from "../types/Plan"
 import { useNavigate } from "react-router-dom"
 
 const PlanCard = ({
