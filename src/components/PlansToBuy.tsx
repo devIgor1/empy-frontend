@@ -2,7 +2,7 @@ import PlanCard from "./PlanCard"
 import { PiWhatsappLogo } from "react-icons/pi"
 import { api } from "../lib/axios"
 import { useEffect, useState } from "react"
-import type { Plan } from "../types"
+import type { Plan } from "../types/Plan"
 
 const Plans = () => {
   const [plans, setPlans] = useState<Plan[]>([])
