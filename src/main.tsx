@@ -7,6 +7,7 @@ import Checkout from "./pages/Checkout.tsx"
 import Receipt from "./components/Receipt.tsx"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import MyPlanPage from "./pages/MyPlan.tsx"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/receipt",
     element: <Receipt />,
+  },
+  {
+    path: "/my-plan",
+    element: <MyPlanPage />,
   },
 ])
 
