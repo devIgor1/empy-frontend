@@ -5,7 +5,7 @@ import dayjs from "dayjs"
 import type { CurrentPlan } from "../types/currentPlan"
 import PlanHeader from "../components/PlanHeader"
 import { formatToBRL } from "../helpers/formatPriceToBRL"
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import PlanInfoRow from "../components/PlanInfoRow"
 
 const MyPlanPage = () => {
@@ -17,16 +17,23 @@ const MyPlanPage = () => {
       .then((data) => setPlan(data))
       .catch((err) => console.error("Erro ao buscar plano:", err))
       .finally(() => setLoading(false))
-    console.log(plan)
   }, [])
 
-  if (!plan) return <p>Nenhum plano encontrado.</p>
+  if (loading) {
+    return (
+      <AuthenticatedLayout>
+        <div className="flex justify-center items-center h-screen">
+          <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-[#3B51FF] border-opacity-50"></div>
+        </div>
+      </AuthenticatedLayout>
+    )
+  }
+
+  if (!plan) return <Navigate to="/not-found" />
 
   const { billingCycle, createdAt, plan: planData } = plan
   const { publicName, monthlyPrice, annualPrice } = planData
 
-  if (loading) return <p>Carregando plano...</p>
-  if (!plan) return <p>Nenhum plano encontrado.</p>
   return (
     <AuthenticatedLayout>
       <div className="flex">
