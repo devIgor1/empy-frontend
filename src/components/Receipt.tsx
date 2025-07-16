@@ -1,9 +1,9 @@
-import { useLocation, useNavigate } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import empyLogo from "../assets/empy, icon2.svg"
 import { PiCheckCircleLight } from "react-icons/pi"
+import { formatToBRL } from "../helpers/formatPriceToBRL"
 
 const Receipt = () => {
-  const navigate = useNavigate()
   const location = useLocation()
   const { plan, amount, last4Digits } = location.state || {}
 
@@ -30,12 +30,12 @@ const Receipt = () => {
         <p className="mt-4 text-gray-600 text-sm">Cartão de crédito</p>
         <p className=" font-bold text-xl">Mastercard - final {last4Digits}</p>
         <div className="mt-6 flex justify-center">
-          <button
-            className="bg-[#3B51FF] text-white px-25 py-2 rounded-full"
-            onClick={() => navigate("/")}
+          <Link
+            to="/my-plan"
+            className="bg-[#3B51FF] text-white px-25 py-2 rounded-full flex justify-center items-center"
           >
             Ir para meu plano
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -62,14 +62,14 @@ const Receipt = () => {
           <div className="flex justify-between items-center p-2">
             <p className="font-light text-[#121929A3]">Valor:</p>
             <span className="text-[#121929A3] font-bold text-xl">
-              R$ {amount.toFixed(2)}
+              R$ {formatToBRL(amount)}
             </span>
           </div>
           <hr className="my-2 border-gray-200 w-full" />
           <div className="flex justify-between items-center p-2">
             <p className="font-bold text-[#3F4FFF]">Total:</p>
             <span className="text-[#3F4FFF] font-bold text-xl">
-              R$ {amount.toFixed(2)}
+              R$ {formatToBRL(amount)}
             </span>
           </div>
         </div>

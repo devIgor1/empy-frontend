@@ -1,6 +1,7 @@
 import { PiCheckCircle } from "react-icons/pi"
 import type { Plan } from "../types/Plan"
-import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
+import { formatToBRL } from "../helpers/formatPriceToBRL"
 
 const PlanCard = ({
   id,
@@ -10,8 +11,6 @@ const PlanCard = ({
   offlineCredits,
   onlineCredits,
 }: Plan) => {
-  const navigate = useNavigate()
-
   return (
     <div className="empy-border-gray shadow-sm flex flex-col justify-between p-[10px]">
       <div>
@@ -26,7 +25,7 @@ const PlanCard = ({
           <p className="empy-text-gray font-bold flex items-center justify-center gap-1">
             Anual R$
             <span className="empy-text-blue font-bold text-4xl">
-              {(annualPrice / 12).toFixed(2)}
+              {formatToBRL(annualPrice / 12)}
             </span>
             / mensais
           </p>
@@ -36,7 +35,7 @@ const PlanCard = ({
           <p className="empy-text-gray font-bold flex items-center justify-center gap-1">
             Mensal R$
             <span className="text-black font-bold text-4xl">
-              {monthlyPrice.toFixed(2)}
+              {formatToBRL(monthlyPrice)}
             </span>
             / mensais
           </p>
@@ -64,18 +63,18 @@ const PlanCard = ({
           </p>
 
           <div className="flex flex-col gap-2 mt-4">
-            <button
-              className="empy-button-blue hover:bg-[#006EB6]"
-              onClick={() => navigate(`/checkout/anual?planId=${id}`)}
+            <Link
+              to={`/checkout/anual?planId=${id}`}
+              className="empy-button-blue hover:bg-[#006EB6] flex justify-center items-center"
             >
               Assinar anual
-            </button>
-            <button
-              className="empy-button-blue hover:bg-[#006EB6]"
-              onClick={() => navigate(`/checkout/mensal?planId=${id}`)}
+            </Link>
+            <Link
+              to={`/checkout/mensal?planId=${id}`}
+              className="empy-button-blue hover:bg-[#006EB6] flex justify-center items-center"
             >
               Assinar mensal
-            </button>
+            </Link>
           </div>
         </div>
       </div>
