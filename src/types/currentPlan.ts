@@ -9,6 +9,5 @@ export type CurrentPlan = {
   billingCycle: "MONTHLY" | "ANNUAL"
   createdAt: string
   status: string
-  cardLastDigits: string
   plan: Plan
 }

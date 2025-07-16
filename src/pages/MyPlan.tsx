@@ -22,7 +22,7 @@ const MyPlanPage = () => {
 
   if (!plan) return <p>Nenhum plano encontrado.</p>
 
-  const { cardLastDigits, billingCycle, createdAt, plan: planData } = plan
+  const { billingCycle, createdAt, plan: planData } = plan
   const { publicName, monthlyPrice, annualPrice } = planData
 
   if (loading) return <p>Carregando plano...</p>
@@ -96,7 +96,7 @@ const MyPlanPage = () => {
 
             <PlanInfoRow
               label="Tipo de Pagamento"
-              value={`Cartão - ${cardLastDigits}`}
+              value={`Cartão - 1111`}
               showTopSpacing
               rightContent={
                 <span className="text-white bg-[#3B51FF] px-3 py-2 sm:p-2 rounded-full text-xs sm:text-sm hover:bg-[#3B51FF]/80 transition-all duration-300 cursor-pointer whitespace-nowrap">
