@@ -5,7 +5,8 @@ import App from "./App.tsx"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Checkout from "./pages/Checkout.tsx"
 import Receipt from "./components/Receipt.tsx"
-
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,5 +25,6 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <RouterProvider router={router} />
+    <ToastContainer />
   </StrictMode>
 )
