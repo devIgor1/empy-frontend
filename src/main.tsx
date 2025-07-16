@@ -11,6 +11,7 @@ import MyPlanPage from "./pages/MyPlan.tsx"
 import HistoryPage from "./pages/History.tsx"
 import NotFoundPage from "./pages/NotFound.tsx"
 import ActivePlansPage from "./pages/ActivePlans.tsx"
+import NewPlanPage from "./pages/NewPlanPage.tsx"
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/admin/active-plans",
     element: <ActivePlansPage />,
+  },
+  {
+    path: "/admin/new-plan",
+    element: <NewPlanPage />,
   },
 ])
 
