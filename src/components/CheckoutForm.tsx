@@ -35,27 +35,40 @@ const CheckoutForm = ({
 
   const onSubmit = async (data: PaymentDTO) => {
     try {
-      await axios.post(`http://localhost:3333/checkout/${planId}/${cycle}`, {
-        namePublic: data.name,
-        cardNumber: cardValue,
-        expiry: data.expiry,
-        cvv: data.cvv,
-        monthlyPrice: planData.monthlyPrice,
-        annualPrice: planData.annualPrice,
-      })
+      const response = await axios.post(
+        `http://localhost:3333/checkout/${planId}/${cycle}`,
+        {
+          namePublic: data.name,
+          cardNumber: cardValue,
+          expiry: data.expiry,
+          cvv: data.cvv,
+          monthlyPrice: planData.monthlyPrice,
+          annualPrice: planData.annualPrice,
+        }
+      )
+
+      const purchase = response.data
 
       const last4 = cardValue.slice(-4)
       const amount =
         cycle === "monthly" ? planData.monthlyPrice : planData.annualPrice
 
-      navigate("/receipt", {
-        state: {
-          plan: planData,
-          amount,
-          last4Digits: last4,
-        },
-      })
-      toast.success("Pedido realizado! Seu pagamento está sendo processado. ")
+      if (purchase.status === "PAID") {
+        toast.success("Pagamento aprovado com sucesso!")
+        navigate("/receipt", {
+          state: {
+            plan: planData,
+            amount,
+            last4Digits: last4,
+          },
+        })
+      } else if (purchase.status === "DECLINED_NO_LIMIT") {
+        toast.error("Pagamento recusado por falta de limite.")
+      } else if (purchase.status === "NOT_AUTHORIZED") {
+        toast.error("Pagamento não autorizado pelo emissor.")
+      } else {
+        toast.error("Falha desconhecida no pagamento.")
+      }
     } catch (err: any) {
       console.error("Erro:", err)
 
