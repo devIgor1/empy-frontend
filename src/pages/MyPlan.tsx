@@ -34,7 +34,6 @@ const MyPlanPage = () => {
           <PlanHeader />
 
           <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
-            {/* Header do Plano */}
             <p className="text-lg sm:text-xl text-[#3B51FF] font-semibold">
               {publicName}
               {planData.isActive ? " (ATIVO)" : " (INATIVO)"}
