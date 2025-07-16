@@ -2,12 +2,27 @@ import { Link, useLocation } from "react-router-dom"
 import empyLogo from "../assets/empy, icon2.svg"
 import { PiCheckCircleLight } from "react-icons/pi"
 import { formatToBRL } from "../helpers/formatPriceToBRL"
+import { useEffect, useState } from "react"
+import { getCurrentPlan } from "@/services/getCurrentPlan"
+import type { CurrentPlan } from "@/types/currentPlan"
 
 const Receipt = () => {
   const location = useLocation()
-  const { plan, amount, last4Digits } = location.state || {}
+  const { last4Digits } = location.state || {}
+  const [plan, setPlan] = useState<CurrentPlan | null>(null)
 
-  if (!plan) return <p>Erro: dados não encontrados.</p>
+  useEffect(() => {
+    getCurrentPlan()
+      .then((data: CurrentPlan) => setPlan(data))
+      .catch((err) => {
+        console.error("Erro ao buscar nome do plano:", err)
+        setPlan(null)
+      })
+  }, [])
+
+  if (!plan) return <p>Nenhum plano encontrado.</p>
+
+  const { billingCycle, plan: planData } = plan
 
   return (
     <div className="p-10 flex justify-center items-start lg:flex-row flex-col gap-10 h-screen ">
@@ -41,7 +56,7 @@ const Receipt = () => {
 
       <div className="bg-white p-6 rounded-xl shadow w-full max-w-sm">
         <div className="w-[230px]">
-          <h3 className="font-semibold">{plan.publicName}</h3>
+          <h3 className="font-semibold">{planData.publicName}</h3>
           <ul className="text-sm text-gray-600 my-2">
             <li className="flex items-center gap-2">
               <PiCheckCircleLight size={20} color="#000000" />
@@ -50,11 +65,11 @@ const Receipt = () => {
             <div className="flex flex-col items-start gap-2 ml-7 mt-2">
               <p className="text-sm flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-green-500" />
-                {plan.offlineCredits} créditos offline
+                {planData.offlineCredits} créditos offline
               </p>
               <p className="text-sm flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-red-500" />
-                {plan.onlineCredits} créditos online
+                {planData.onlineCredits} créditos online
               </p>
             </div>
           </ul>
@@ -62,14 +77,24 @@ const Receipt = () => {
           <div className="flex justify-between items-center p-2">
             <p className="font-light text-[#121929A3]">Valor:</p>
             <span className="text-[#121929A3] font-bold text-xl">
-              R$ {formatToBRL(amount)}
+              R${" "}
+              {formatToBRL(
+                billingCycle === "MONTHLY"
+                  ? planData.monthlyPrice
+                  : planData.annualPrice
+              )}
             </span>
           </div>
           <hr className="my-2 border-gray-200 w-full" />
           <div className="flex justify-between items-center p-2">
             <p className="font-bold text-[#3F4FFF]">Total:</p>
             <span className="text-[#3F4FFF] font-bold text-xl">
-              R$ {formatToBRL(amount)}
+              R${" "}
+              {formatToBRL(
+                billingCycle === "MONTHLY"
+                  ? planData.monthlyPrice
+                  : planData.annualPrice
+              )}
             </span>
           </div>
         </div>

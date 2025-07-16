@@ -34,10 +34,18 @@ const MyPlanPage = () => {
           <PlanHeader />
 
           <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
-            <p className="text-lg sm:text-xl text-[#3B51FF] font-semibold">
-              {publicName}
-              {planData.isActive ? " (ATIVO)" : " (INATIVO)"}
-            </p>
+            <div className="flex items-center justify-between">
+              <p className="text-lg sm:text-xl text-[#3B51FF] font-semibold">
+                {publicName}
+                {planData.isActive ? " (ATIVO)" : " (INATIVO)"}
+              </p>
+              <Link
+                to="/"
+                className="text-white bg-[#3B51FF] px-3 py-2 sm:p-2 rounded-full text-xs sm:text-base hover:bg-[#3B51FF]/80 transition-all duration-300 cursor-pointer whitespace-nowrap"
+              >
+                Alterar Plano
+              </Link>
+            </div>
 
             <p className="bg-[#F96E0F] text-xs sm:text-sm mt-2 rounded-sm p-2 sm:p-1 text-center font-bold text-white">
               Assinatura expira em{" "}
