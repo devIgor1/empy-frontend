@@ -42,10 +42,13 @@ const MyPlanPage = () => {
 
           <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
             <div className="flex items-center justify-between">
-              <p className="text-lg sm:text-xl text-[#3B51FF] font-semibold">
-                {publicName}
-                {planData.isActive ? " (ATIVO)" : " (INATIVO)"}
-              </p>
+              <div className="flex flex-col">
+                <p>Nome do plano</p>
+                <p className="text-lg sm:text-xl text-[#3B51FF] font-semibold">
+                  {publicName}
+                  {planData.isActive ? " (ATIVO)" : " (INATIVO)"}
+                </p>
+              </div>
               <Link
                 to="/"
                 className="text-white bg-[#3B51FF] px-3 py-2 sm:p-2 rounded-full text-xs sm:text-base hover:bg-[#3B51FF]/80 transition-all duration-300 cursor-pointer whitespace-nowrap"
