@@ -1,11 +1,21 @@
 import PlanCard from "./PlanCard"
 import { PiWhatsappLogo } from "react-icons/pi"
 import { api } from "../lib/axios"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import type { Plan } from "../types/Plan"
+import { useSearchParams } from "react-router-dom"
 
 const Plans = () => {
   const [plans, setPlans] = useState<Plan[]>([])
+  const [searchParams] = useSearchParams()
+  const customPlanId = searchParams.get("custom")
+
+  const visiblePlans = useMemo(() => {
+    if (customPlanId) {
+      return plans.filter((plan) => plan.id === customPlanId)
+    }
+    return plans
+  }, [plans, customPlanId])
 
   useEffect(() => {
     api.get("/plans").then((response) => {
@@ -18,7 +28,7 @@ const Plans = () => {
       <h2 className="text-xl font-bold mb-6">Planos de acesso</h2>
 
       <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
-        {plans.map((plan) => (
+        {visiblePlans.map((plan) => (
           <PlanCard
             createdAt={plan.createdAt}
             key={plan.id}

@@ -89,10 +89,6 @@ const AdminPlansTable = ({ plans }: { plans: Plan[] }) => {
             aValue = a.isActive
             bValue = b.isActive
             break
-          case "onlineCredits":
-            aValue = a.onlineCredits
-            bValue = b.onlineCredits
-            break
           case "recommended":
             aValue = a.isRecommended
             bValue = b.isRecommended
@@ -304,7 +300,7 @@ const AdminPlansTable = ({ plans }: { plans: Plan[] }) => {
                     className={index % 2 === 0 ? "bg-white" : "bg-gray-50/50"}
                   >
                     <TableCell className="text-gray-700 py-4">
-                      {record.id}
+                      {record.id.slice(0, 6)}
                     </TableCell>
                     <TableCell className="text-gray-700 py-4">
                       {record.publicName}
