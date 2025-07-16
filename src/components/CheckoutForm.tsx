@@ -55,8 +55,13 @@ const CheckoutForm = ({
           last4Digits: last4,
         },
       })
-    } catch (err) {
+      toast.success("Pedido realizado! Seu pagamento está sendo processado. ")
+    } catch (err: any) {
       console.error("Erro:", err)
+
+      const errorMsg =
+        err?.response?.data?.error || "Erro inesperado. Tente novamente."
+      toast.warn(errorMsg)
     }
   }
 
@@ -123,6 +128,7 @@ const CheckoutForm = ({
           type="text"
           placeholder="CVV"
           className="w-full mt-1 border rounded-md p-2 text-sm text-gray-700"
+          maxLength={3}
         />
         {errors.cvv && (
           <p className="text-red-500 text-xs mt-1">{errors.cvv.message}</p>
@@ -132,7 +138,7 @@ const CheckoutForm = ({
       <div className="md:col-span-2">
         <button
           type="submit"
-          className="bg-[#2F51FB] text-white font-semibold px-8 py-2 rounded-full hover:bg-[#1f3ce0] transition w-full"
+          className="bg-[#2F51FB] text-white font-semibold px-8 py-2 rounded-full transition w-full cursor-pointer hover:bg-[#006EB6]"
         >
           Continuar
         </button>
