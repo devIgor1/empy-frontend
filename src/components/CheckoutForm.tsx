@@ -5,7 +5,7 @@ import { IMaskMixin } from "react-imask"
 import axios from "axios"
 import { PaymentSchema, type PaymentDTO } from "../schemas/payment.schema"
 import { toast } from "react-toastify"
-import type { Plan } from "../types"
+import type { Plan } from "../types/Plan"
 import { useNavigate } from "react-router-dom"
 
 const CFormInputWithMask = IMaskMixin(({ inputRef, ...props }: any) => (
