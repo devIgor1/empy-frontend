@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom"
-import empyLogo from "../assets/empy, icon2.svg"
+import empyLogo from "../assets/empyIcon2.svg"
 import { PiCheckCircleLight } from "react-icons/pi"
 import { formatToBRL } from "../helpers/formatPriceToBRL"
 import { useEffect, useState } from "react"

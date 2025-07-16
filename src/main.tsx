@@ -9,7 +9,9 @@ import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import MyPlanPage from "./pages/MyPlan.tsx"
 import HistoryPage from "./pages/History.tsx"
-import NotFound from "./pages/NotFound.tsx"
+import NotFoundPage from "./pages/NotFound.tsx"
+import ActivePlansPage from "./pages/ActivePlans.tsx"
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,7 +35,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/not-found",
-    element: <NotFound />,
+    element: <NotFoundPage />,
+  },
+  {
+    path: "/admin/active-plans",
+    element: <ActivePlansPage />,
   },
 ])
 
