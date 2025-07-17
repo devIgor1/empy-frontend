@@ -53,7 +53,7 @@ const NewPlanForm = () => {
       <h1 className="text-2xl font-semibold text-gray-900 mb-6">Criar Plano</h1>
 
       <div className="border-l-4 border-blue-600 pl-4 mb-6">
-        <div className="bg-[#FAA61A1A] border border-[#FAA61A] px-4 py-3 rounded-lg mb-4 text-sm flex items-center gap-2">
+        <div className="bg-[#FAA61A1A] border border-[#FAA61A] px-4 py-3 rounded mb-4 text-sm flex items-center gap-2">
           <IoIosAlert color="#FAA61A" size={30} />
           Seu plano terá as configurações do plano base.
         </div>
