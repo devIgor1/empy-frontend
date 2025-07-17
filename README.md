@@ -6,7 +6,18 @@ Sistema de gerenciamento e contratação de planos com interface administrativa 
 
 ---
 
-## 🚀 Tecnologias
+## 🚀 Deploy
+
+Este projeto já está disponível em produção.
+
+🔗 Acesse diretamente a aplicação sem a necessidade de rodar localmente:
+
+[➡️ Link para o Frontend Deploy](https://seu-front.vercel.app)
+
+> 💡 Caso deseje rodar localmente, siga os passos abaixo normalmente.
+
+
+## 🖥️ Tecnologias
 
 - React (Vite)
 - TypeScript
