@@ -30,7 +30,7 @@ const PlanInfoRow: React.FC<PlanInfoRowProps> = ({
       </div>
 
       <div className={`${showTopSpacing ? "mt-2 sm:mt-3" : "mt-1"}`}>
-        <p className="text-sm break-words">{value}</p>
+        <div className="text-sm break-words">{value}</div>
       </div>
     </div>
   )
