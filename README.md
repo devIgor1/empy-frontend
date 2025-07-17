@@ -12,7 +12,7 @@ Este projeto já está disponível em produção.
 
 🔗 Acesse diretamente a aplicação sem a necessidade de rodar localmente:
 
-[➡️ Link para o Frontend Deploy](https://seu-front.vercel.app)
+[➡️ Link para o Frontend Deploy](https://empy-frontend.vercel.app/)
 
 > 💡 Caso deseje rodar localmente, siga os passos abaixo normalmente.
 
