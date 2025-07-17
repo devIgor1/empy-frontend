@@ -1,69 +1,77 @@
-# React + TypeScript + Vite
+# 💻 Frontend - Sistema de Gestão de Planos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend React  
 
-Currently, two official plugins are available:
+Sistema de gerenciamento e contratação de planos com interface administrativa e simulação de pagamentos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologias
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React (Vite)
+- TypeScript
+- Tailwind CSS + ShadCN
+- React Router DOM
+- Axios
+- React Hook Form
+- React Toastify
+- Lucide React Icons
+- Dayjs
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 📂 Estrutura
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+frontend/
+src/
+├── assets/        # Imagens, ícones, fontes e arquivos estáticos
+├── components/    # Componentes reutilizáveis da interface (ex: botões, tabelas, inputs, forms)
+├── helpers/       # Funções utilitárias e helpers (ex: formatação de preço)
+├── layouts/       # Layouts principais (ex: Layout padrão de páginas, layout de admin)
+├── lib/           # Integrações externas e instâncias (ex: axios, toast)
+├── pages/         # Páginas completas da aplicação (ex: /admin/active-plans, /checkout)
+├── schemas/       # Validações com zod ou yup, esquemas de formulário
+├── services/      # Serviços de comunicação com a API (ex: getPlans)
+├── types/         # Tipagens TypeScript compartilhadas (ex: `Plan`, `Purchases`)
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ⚙️ Variáveis de Ambiente
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Crie um `.env`:
+
 ```
+VITE_BASE_URL=http://localhost:5173
+```
+
+---
+
+## 🧪 Principais Rotas
+
+- `/` → Página de planos disponíveis
+- `/checkout/:cycle?planId=id` → Checkout de plano específico
+- `/my-plan` → Detalhes do plano assinado
+- `/receipt` → Comprovante de pagamento
+- `/admin/active-plans` → Tabela de planos com cópia de link
+- `/admin/new-plan` → Criação de plano personalizado
+
+---
+
+## 🛠️ Como rodar
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+## ⚠️ Observações
+
+- O sistema simula pagamentos com cartão:
+  - Aprovado: `4111 1111 1111 1111`
+  - Recusado: qualquer outro número (validação lógica no backend)
