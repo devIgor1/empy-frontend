@@ -10,7 +10,6 @@ const Checkout = () => {
   const [searchParams] = useSearchParams()
   const planId = searchParams.get("planId")
 
-  console.log(planId)
   const [planData, setPlanData] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -38,11 +37,21 @@ const Checkout = () => {
   }, [planId])
 
   if (!planId || !cycle) {
-    return <p className="text-red-500 mt-10">Erro: plano ou ciclo inválido.</p>
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-red-500 text-center text-lg font-semibold">
+          Erro: plano ou ciclo inválido.
+        </p>
+      </div>
+    )
   }
 
   if (loading) {
-    return <p className="text-gray-500 mt-10">Carregando plano...</p>
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-[#3B51FF] border-opacity-50"></div>
+      </div>
+    )
   }
 
   if (error || !planData) {

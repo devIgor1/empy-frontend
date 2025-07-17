@@ -20,7 +20,13 @@ const Receipt = () => {
       })
   }, [])
 
-  if (!plan) return <p>Nenhum plano encontrado.</p>
+  if (!plan) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-[#3B51FF] border-opacity-50"></div>
+      </div>
+    )
+  }
 
   const { billingCycle, plan: planData } = plan
 
