@@ -57,6 +57,7 @@ VITE_BASE_URL=http://localhost:5173
 - `/receipt` → Comprovante de pagamento
 - `/admin/active-plans` → Tabela de planos com cópia de link
 - `/admin/new-plan` → Criação de plano personalizado
+- `/${VITE_BASE_URL}/?custom=${plan.id}` → Página que mostra o plano personalizado criado
 
 ---
 
