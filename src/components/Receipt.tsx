@@ -77,7 +77,6 @@ const Receipt = () => {
           <div className="flex justify-between items-center p-2">
             <p className="font-light text-[#121929A3]">Valor:</p>
             <span className="text-[#121929A3] font-bold text-xl">
-              R${" "}
               {formatToBRL(
                 billingCycle === "MONTHLY"
                   ? planData.monthlyPrice
@@ -89,7 +88,6 @@ const Receipt = () => {
           <div className="flex justify-between items-center p-2">
             <p className="font-bold text-[#3F4FFF]">Total:</p>
             <span className="text-[#3F4FFF] font-bold text-xl">
-              R${" "}
               {formatToBRL(
                 billingCycle === "MONTHLY"
                   ? planData.monthlyPrice
