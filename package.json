@@ -47,5 +47,10 @@
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-musl": "4.9.5"
+  },
+  "overrides": {
+    "esbuild-css-modules-plugin": {
+      "lightningcss": "1.21.3"
+    }
   }
 }
