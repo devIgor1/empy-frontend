@@ -29,6 +29,7 @@ import type { Plan } from "@/types/Plan"
 import { toast } from "react-toastify"
 import { PiCopyLight } from "react-icons/pi"
 import { Link } from "react-router-dom"
+import dayjs from "dayjs"
 
 const AdminPlansTable = ({ plans }: { plans: Plan[] }) => {
   const [searchTerm, setSearchTerm] = useState("")
@@ -61,6 +62,10 @@ const AdminPlansTable = ({ plans }: { plans: Plan[] }) => {
         let bValue: string | number | object | boolean
 
         switch (sortColumn) {
+          case "createdAt":
+            aValue = a.createdAt
+            bValue = b.createdAt
+            break
           case "id":
             aValue = a.id
             bValue = b.id
@@ -105,6 +110,8 @@ const AdminPlansTable = ({ plans }: { plans: Plan[] }) => {
         if (aValue > bValue) return sortDirection === "asc" ? 1 : -1
         return 0
       })
+    } else {
+      filtered.sort((a, b) => dayjs(b.createdAt).diff(dayjs(a.createdAt)))
     }
 
     return filtered
