@@ -32,8 +32,6 @@ const NewPlanForm = () => {
   const onSubmit = async (data: CreateCustomPlanDTO) => {
     const payload = { ...data, basePlanId: "2" }
 
-    console.log("Payload:", payload)
-
     try {
       await api.post("/plans/custom", payload)
       toast.success("Plano criado com sucesso!")
