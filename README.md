@@ -69,9 +69,36 @@ npm run dev
 ```
 
 ---
+## 🚀 Fluxos implementados
+
+### 🟢 Escolha inicial
+
+- ✅ Usuário escolhe o plano **Standard**
+- 💳 Simula **pagamento bem-sucedido**
+- 📄 Redireciona para `/receipt`
+
+---
+
+### ⬆️ Upgrade de plano
+
+- 🔁 Acesso pelo botão **"Alterar Plano"** em `/my-plan`
+- ⚠️ Pode haver:
+  - ❌ **Recusa** (sem limite): Mensagem visível, sem alteração do plano
+  - ✅ **Sucesso**: Redireciona para página de sucesso e atualiza o plano
+
+---
+
+### ⬇️ Downgrade de plano
+
+- 🔁 Mesmo acesso via botão **"Alterar Plano"**
+- ⚠️ Pode haver:
+  - 🔒 **Não autorizado**: Mensagem exibida ao usuário
+  - ✅ **Sucesso**: Plano inferior ativado com sucesso
+
 
 ## ⚠️ Observações
 
 - O sistema simula pagamentos com cartão:
   - Aprovado: `4111 1111 1111 1111`
   - Recusado: qualquer outro número (validação lógica no backend)
+  - Todas as tentativas (pagas ou não) aparecem no histórico
