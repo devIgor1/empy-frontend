@@ -24,7 +24,7 @@ const Checkout = () => {
     const fetchPlan = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3333/plans/${planId}`
+          `${import.meta.env.VITE_BASE_URL}/plans/${planId}`
         )
         setPlanData(response.data)
       } catch (err) {
