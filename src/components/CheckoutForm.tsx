@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"
 import { IMaskMixin } from "react-imask"
-import axios from "axios"
+import { api } from "@/lib/axios"
 import { PaymentSchema, type PaymentDTO } from "../schemas/payment.schema"
 import { toast } from "react-toastify"
 import type { Plan } from "../types/Plan"
@@ -35,17 +35,14 @@ const CheckoutForm = ({
 
   const onSubmit = async (data: PaymentDTO) => {
     try {
-      const response = await axios.post(
-        `http://localhost:3333/checkout/${planId}/${cycle}`,
-        {
-          namePublic: data.name,
-          cardNumber: cardValue,
-          expiry: data.expiry,
-          cvv: data.cvv,
-          monthlyPrice: planData.monthlyPrice,
-          annualPrice: planData.annualPrice,
-        }
-      )
+      const response = await api.post(`/checkout/${planId}/${cycle}`, {
+        namePublic: data.name,
+        cardNumber: cardValue,
+        expiry: data.expiry,
+        cvv: data.cvv,
+        monthlyPrice: planData.monthlyPrice,
+        annualPrice: planData.annualPrice,
+      })
 
       const purchase = response.data
 
